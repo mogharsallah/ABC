@@ -37,6 +37,18 @@
       templateUrl: 'views/dashboard.html',
       controller: 'DashboardCtrl'
   })
+	.state('transaction', {
+      url: '/transaction',
+      parent: 'dashboard',
+      templateUrl: 'views/dashboard/transaction.html',
+      controller: 'TransactionCtrl'
+  })
+  .state('process', {
+      url: '/process',
+      parent: 'dashboard',
+      templateUrl: 'views/dashboard/process.html',
+      controller: 'ProcessCtrl'
+  })
     .state('overview', {
         url: '/overview',
         parent: 'dashboard',
