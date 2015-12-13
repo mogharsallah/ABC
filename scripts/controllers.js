@@ -4,8 +4,8 @@ angular.module('yapp')
     $scope.$state = $state;
 
   })
-  
-  .controller('TransactionCtrl', function($scope, $state) {
+
+	  .controller('TransactionCtrl', function($scope, $state) {
 	
     $scope.$state = $state;
 	$scope.submit = function() {
@@ -14,6 +14,12 @@ angular.module('yapp')
 
       return false;
     }
+  })
+
+  .controller('OverviewCtrl', function($scope, $state,stats) {
+	
+    $scope.$state = $state;
+	
   })
     .controller('ProcessCtrl', function($scope, $state) {
 	

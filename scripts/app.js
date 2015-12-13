@@ -12,6 +12,7 @@
  .module('yapp', [
     'ui.router',
     'snap',
+	'ngResource',
     'ngAnimate'
     ])
  .config(function($stateProvider, $urlRouterProvider) {
@@ -52,7 +53,8 @@
     .state('overview', {
         url: '/overview',
         parent: 'dashboard',
-        templateUrl: 'views/dashboard/overview.html'
+        templateUrl: 'views/dashboard/overview.html',
+		controller: 'OverviewCtrl'
     })
     .state('reports', {
         url: '/reports',
@@ -60,4 +62,25 @@
         templateUrl: 'views/dashboard/reports.html'
     });
 
+})
+
+.factory('stats', function ($resource) {
+    return $resource('localhost/getstats', {}, {
+        query: { method: 'GET', isArray: true }
+    })
+})
+.factory('transaction', function ($resource) {
+    return $resource('localhost/transaction/?pk=:pk&a=:a', {pk:'@pk',a:'a'}, {
+        create: { method: 'POST' }
+    })
+})
+.factory('input', function ($resource) {
+    return $resource('localhost/input', {}, {
+        create: { method: 'POST' }
+    })
+})
+.factory('report', function ($resource) {
+    return $resource('localhost/getreport', {}, {
+        create: { method: 'GET' }
+    })
 });
